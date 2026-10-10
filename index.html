@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>کاوشگر چهرهٔ زمین | مطالعات اجتماعی نهم</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;500;600;700;800;900&display=swap');
+:root{--bg:#080d19;--panel:#111b2c;--panel2:#16243a;--text:#f4f7fb;--muted:#b4c1d3;--line:#2a3c55;--green:#68d6b0;--blue:#69bdf4;--gold:#ffd477;--purple:#b7a3ff;--red:#ff9e9e}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:radial-gradient(ellipse at 80% 0%,#172b4a 0,#080d19 48%);color:var(--text);font-family:Vazirmatn,Tahoma,sans-serif;line-height:1.9}
+button{font:inherit;cursor:pointer}
+a{color:inherit}
+.container{width:min(1160px,94%);margin:auto}
+header{padding:42px 0 28px;text-align:center}
+.eyebrow{display:inline-block;color:var(--green);border:1px solid #326c67;background:#102d32;padding:5px 14px;border-radius:99px;font-size:13px;font-weight:800}
+h1{font-size:clamp(30px,5vw,52px);line-height:1.3;margin:15px 0 10px}
+header p{max-width:760px;margin:0 auto;color:var(--muted);font-size:17px}
+nav{position:sticky;top:0;z-index:10;background:#080d19eF;border-block:1px solid #26364c;backdrop-filter:blur(12px)}
+.nav-inner{display:flex;gap:8px;overflow:auto;padding:10px 0}
+nav a{white-space:nowrap;text-decoration:none;color:#d5dfec;border:1px solid transparent;border-radius:10px;padding:7px 12px;font-size:13px}
+nav a:hover{background:#17263b;border-color:#31445d}
+section{padding:28px 0;scroll-margin-top:70px}
+.section-head{display:flex;align-items:center;gap:14px;margin-bottom:18px}
+.section-head .num{width:46px;height:46px;border-radius:15px;display:grid;place-items:center;background:#203951;color:var(--green);font-size:22px;font-weight:900;flex-shrink:0}
+h2{margin:0;font-size:clamp(23px,3vw,32px);line-height:1.4}
+.section-head p{margin:3px 0 0;color:var(--muted);font-size:14px}
+.panel{background:linear-gradient(145deg,#142137f2,#0e1727f2);border:1px solid var(--line);border-radius:23px;padding:clamp(17px,3vw,28px);box-shadow:0 18px 45px #0002}
+.grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:15px}
+.two{grid-template-columns:repeat(2,minmax(0,1fr))}
+.three-card{border-radius:18px;padding:18px;border:1px solid var(--line);background:#ffffff05}
+.three-card h3{margin:8px 0;font-size:20px}
+.three-card p{margin:7px 0;color:#d2dce9;font-size:14px}
+.icon{font-size:36px;line-height:1.3}
+.pill{display:inline-block;padding:3px 9px;border-radius:99px;font-size:12px;font-weight:800;background:#24374d;color:#d8e5f3}
+.litho{border-top:4px solid #d6a16f}.hydro{border-top:4px solid #53b9f3}.atmo{border-top:4px solid #8cdcb3}
+.earth-scene{position:relative;min-height:330px;overflow:hidden;display:grid;place-items:center;background:linear-gradient(#122945,#0c1829);border-radius:19px;margin-bottom:17px}
+.sky-glow{position:absolute;inset:0;background:radial-gradient(ellipse at 50% 25%,#83c9ff1f,transparent 48%)}
+.earth{width:min(250px,54vw);aspect-ratio:1;border-radius:50%;position:relative;overflow:hidden;background:radial-gradient(ellipse at 35% 25%,#7ed1f7 0 8%,transparent 9%),radial-gradient(ellipse at 30% 44%,#76c98b 0 15%,transparent 16%),radial-gradient(ellipse at 65% 65%,#7dc77c 0 17%,transparent 18%),radial-gradient(ellipse at 52% 36%,#4b9c75 0 12%,transparent 13%),linear-gradient(135deg,#2a7bb8,#123b75 70%);box-shadow:inset -24px -12px 40px #020b22,0 0 35px #65bff355}
+.earth:before{content:"";position:absolute;inset:0;background:repeating-linear-gradient(90deg,transparent 0 24px,#c1edff18 25px 27px);border-radius:50%;animation:spin 18s linear infinite}
+.earth:after{content:"";position:absolute;inset:-5px;border-radius:50%;border:3px solid #9ddcff55}
+@keyframes spin{to{transform:translateX(30px)}}
+.orbit{position:absolute;width:310px;height:110px;border:1px solid #8ac8ee55;border-radius:50%;transform:rotate(-22deg)}
+.scene-label{position:absolute;bottom:13px;color:#d3e4f5;font-size:12px;text-align:center}
+.compare-control{display:flex;gap:8px;flex-wrap:wrap;margin:14px 0}
+.tab{border:1px solid var(--line);color:#e7edf5;background:#17263a;border-radius:12px;padding:9px 14px;font-weight:700}
+.tab.active{background:#d7fff0;color:#103c35;border-color:#d7fff0}
+.compare-detail{border-radius:16px;padding:17px;background:#ffffff07;border:1px solid var(--line);min-height:115px}
+.compare-detail h3{margin:0 0 5px}
+.statline{display:flex;gap:9px;flex-wrap:wrap;margin-top:12px}
+.stat{background:#ffffff08;border:1px solid var(--line);padding:8px 11px;border-radius:11px;font-size:13px}
+.callout{border-right:4px solid var(--gold);background:#ffd47710;padding:13px 16px;border-radius:12px;margin-top:16px;color:#f7e9c7}
+.map-legend{display:flex;gap:13px;flex-wrap:wrap;margin:10px 0 0;font-size:13px;color:var(--muted)}
+.dot{display:inline-block;width:10px;height:10px;border-radius:3px;margin-left:5px}
+.terrain{height:245px;border-radius:18px;overflow:hidden;position:relative;background:linear-gradient(#87c6e5 0 45%,#d9edee 45% 100%);margin-bottom:15px}
+.sun{position:absolute;width:45px;height:45px;border-radius:50%;background:#ffe8a3;top:20px;left:35px;box-shadow:0 0 35px #ffe8a377}
+.mountain{position:absolute;bottom:0;width:0;height:0;border-left:95px solid transparent;border-right:95px solid transparent;border-bottom:165px solid #657b88}
+.mountain:after{content:"";position:absolute;left:-30px;top:38px;border-left:30px solid transparent;border-right:30px solid transparent;border-bottom:47px solid #eaf3f3}
+.m1{right:10%;border-bottom-color:#667987}.m2{right:32%;transform:scale(.8);transform-origin:bottom;border-bottom-color:#81929b}.m3{right:52%;transform:scale(1.1);transform-origin:bottom;border-bottom-color:#526a7a}
+.plain{position:absolute;bottom:0;left:0;width:100%;height:65px;background:linear-gradient(#7ebc77,#498d62)}
+.plate-scene{background:#0c1726;border-radius:18px;overflow:hidden;border:1px solid var(--line);padding:12px}
+.plate-scene svg{width:100%;height:auto;display:block}
+select,input{font:inherit;background:#0d1828;color:var(--text);border:1px solid #3a4d65;border-radius:10px;padding:9px}
+.controls{display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin:10px 0}
+.mini-note{font-size:12px;color:var(--muted)}
+.process{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;margin-top:14px}
+.step{padding:13px;border-radius:14px;background:#ffffff06;border:1px solid var(--line);font-size:13px}
+.step b{display:block;color:var(--green);font-size:15px;margin-bottom:4px}
+.formation-card{border-radius:18px;padding:18px;border:1px solid var(--line);background:#ffffff05}
+.formation-card h3{margin:5px 0}
+.formation-card p{font-size:14px;color:#d4deea;margin:7px 0}
+.svg-wrap{background:#0b1625;border:1px solid var(--line);border-radius:16px;padding:8px}
+.svg-wrap svg{width:100%;display:block}
+.action{background:#d7fff0;color:#113c35;border:0;border-radius:12px;padding:10px 16px;font-weight:900}
+.quiz{display:grid;gap:12px}
+.quiz-q{padding:17px;border:1px solid var(--line);border-radius:15px;background:#ffffff05}
+.quiz-q p{margin:0 0 10px;font-weight:700}
+.quiz-q button{margin:4px 4px 0 0;background:#17263a;color:#e9f1fa;border:1px solid #3a4b61;border-radius:10px;padding:8px 11px}
+.quiz-q button.correct{background:#164637;border-color:#4bc39c}.quiz-q button.wrong{background:#502d36;border-color:#e87d8d}
+.feedback{font-size:13px;color:var(--muted);margin-top:7px;min-height:22px}
+footer{text-align:center;color:var(--muted);font-size:12px;padding:32px 0 45px}
+@media(max-width:780px){.grid,.two{grid-template-columns:1fr}.process{grid-template-columns:repeat(2,minmax(0,1fr))}.earth-scene{min-height:285px}.terrain{height:220px}.panel{padding:16px}}
+@media(max-width:420px){.process{grid-template-columns:1fr 1fr}.section-head .num{width:39px;height:39px}.nav-inner{width:100%}}
+</style>
+</head>
+<body>
+<header class="container">
+  <span class="eyebrow">مطالعات اجتماعی نهم • درس ۳</span>
+  <h1>کاوشگر چهرهٔ زمین 🌍</h1>
+  <p>از کره‌های زمین تا شکل‌گیری کوه‌ها؛ با تصویر، مقایسه و آزمایش‌های تعاملی یاد بگیر چرا سطح زمین هموار نیست و چگونه طبیعت و انسان آن را تغییر می‌دهند.</p>
+</header>
+<nav><div class="container nav-inner">
+<a href="#spheres">سه کرهٔ زمین</a><a href="#land">خشکی‌ها و قاره‌ها</a><a href="#relief">ناهمواری‌ها</a><a href="#mountains">کوه‌های جوان و پیر</a><a href="#plates">حرکت ورقه‌ها</a><a href="#forces">عوامل تغییر</a><a href="#human">اثر انسان</a><a href="#review">مرور</a>
+</div></nav>
+<main class="container">
+<section id="spheres">
+<div class="section-head"><div class="num">۱</div><div><h2>زمین از سه محیط به‌هم‌پیوسته ساخته شده است</h2><p>روی هر دکمه بزن تا ببینی هر کره چیست و چه نقشی دارد.</p></div></div>
+<div class="panel">
+<div class="earth-scene"><div class="sky-glow"></div><div class="orbit"></div><div class="earth"></div><div class="scene-label">زمین؛ جایی که سنگ، آب و هوا با هم تعامل دارند</div></div>
+<div class="compare-control" role="tablist">
+<button class="tab active" data-sphere="litho">🪨 سنگ‌کره</button><button class="tab" data-sphere="hydro">💧 آب‌کره</button><button class="tab" data-sphere="atmo">💨 هواکره</button><button class="tab" data-sphere="bio">🌱 زیست‌کره</button>
+</div>
+<div class="grid two">
+<div id="sphereDetail" class="compare-detail"><h3>🪨 سنگ‌کره (لیتوسفر)</h3><p>بخش جامد و خارجی زمین است و از سنگ و خاک تشکیل شده است. سطح خشکی‌ها و بستر اقیانوس‌ها در این بخش قرار دارند.</p><div class="statline"><span class="stat">حالت: جامد</span><span class="stat">نمونه: سنگ، خاک، پوستهٔ زمین</span></div></div>
+<div class="compare-detail"><h3>چرا به هم وابسته‌اند؟</h3><p id="sphereRelation">خاک و سنگ بستر رشد گیاهان‌اند؛ آب به فرسایش سنگ‌ها کمک می‌کند و جو در چرخهٔ آب و شرایط زندگی نقش دارد.</p><div class="callout">زیست‌کره، یعنی محل زندگی موجودات زنده، با هر سه محیط ارتباط دارد.</div></div>
+</div>
+</div>
+</section>
+<section id="land">
+<div class="section-head"><div class="num">۲</div><div><h2>آب و خشکی در سطح زمین</h2><p>توزیع آب و خشکی در دو نیمکره یکسان نیست.</p></div></div>
+<div class="panel">
+<div class="grid two">
+<div class="three-card"><h3>🌐 کل زمین</h3><div style="height:22px;border-radius:99px;overflow:hidden;display:flex;margin:12px 0"><div style="width:71%;background:#48b9f2"></div><div style="width:29%;background:#c6a16e"></div></div><p><b style="color:#69bdf4">۷۱٪ آب</b> و <b style="color:#e6c18b">۲۹٪ خشکی</b> (تقریبی)</p></div>
+<div class="three-card"><h3>🌍 نیمکرهٔ شمالی</h3><div style="height:22px;border-radius:99px;overflow:hidden;display:flex;margin:12px 0"><div style="width:60%;background:#48b9f2"></div><div style="width:40%;background:#c6a16e"></div></div><p><b style="color:#69bdf4">۶۰٪ آب</b> و <b style="color:#e6c18b">۴۰٪ خشکی</b></p></div>
+<div class="three-card"><h3>🌏 نیمکرهٔ جنوبی</h3><div style="height:22px;border-radius:99px;overflow:hidden;display:flex;margin:12px 0"><div style="width:82%;background:#48b9f2"></div><div style="width:18%;background:#c6a16e"></div></div><p><b style="color:#69bdf4">۸۲٪ آب</b> و <b style="color:#e6c18b">۱۸٪ خشکی</b></p></div>
+<div class="three-card"><h3>قاره‌ها</h3><p>پنج مجموعهٔ بزرگ خشکی در متن درس: <b>آسیا، اروپا، آفریقا، آمریکا و اقیانوسیه</b>.</p><p class="mini-note">قاره‌ها سطحی کاملاً هموار ندارند؛ در آن‌ها کوه، فلات، دشت و دره دیده می‌شود.</p></div>
+</div>
+<div class="callout">تحلیل: چون درصد خشکی در نیمکرهٔ شمالی بیشتر است، وسعت آب در نیمکرهٔ جنوبی بیشتر دیده می‌شود.</div>
+</div>
+</section>
+<section id="relief">
+<div class="section-head"><div class="num">۳</div><div><h2>ناهمواری یعنی چه؟</h2><p>سطح خشکی‌ها صاف و یکدست نیست؛ بلندی‌ها و پستی‌های گوناگون دارد.</p></div></div>
+<div class="panel">
+<div class="terrain"><div class="sun"></div><div class="mountain m1"></div><div class="mountain m2"></div><div class="mountain m3"></div><div class="plain"></div></div>
+<div class="grid">
+<div class="three-card"><div class="icon">⛰️</div><h3>کوه</h3><span class="pill">بلند و معمولاً پرشیب</span><p>ناهمواری مرتفعی است که نسبت به زمین‌های اطراف ارتفاع بیشتری دارد. قله و دامنه دارد.</p></div>
+<div class="three-card"><div class="icon">🌾</div><h3>دشت و جلگه</h3><span class="pill">پست و نسبتاً هموار</span><p>سرزمین‌های کم‌ارتفاع و هموارند. بسیاری از جلگه‌ها در کنار دریاها یا در امتداد رودهای بزرگ تشکیل شده‌اند.</p></div>
+<div class="three-card"><div class="icon">🟫</div><h3>فلات</h3><span class="pill">مرتفع و نسبتاً هموار</span><p>سرزمینی است که از اطراف بلندتر است، اما سطح آن نسبتاً هموار است. فلات تبت از بلندترین فلات‌های جهان است.</p></div>
+<div class="three-card"><div class="icon">🔺</div><h3>تپه</h3><span class="pill">بلندی کمتر</span><p>برآمدگی زمین که معمولاً از کوه کوتاه‌تر است.</p></div>
+<div class="three-card"><div class="icon">↘️</div><h3>دره</h3><span class="pill">بخش پایین میان بلندی‌ها</span><p>فرورفتگی کشیده‌ای میان ارتفاعات است؛ شکل آن می‌تواند بر اثر نوع فرسایش متفاوت باشد.</p></div>
+<div class="three-card"><div class="icon">🌊</div><h3>درازگودال اقیانوسی</h3><span class="pill">بسیار ژرف</span><p>فرورفتگی بسیار عمیقی در کف اقیانوس است؛ درازگودال ماریانا از نمونه‌های شناخته‌شده است.</p></div>
+</div>
+<div class="callout">راهنمای رنگ نقشه‌های ناهمواری: سبز معمولاً سرزمین‌های پست، زرد و قهوه‌ای سرزمین‌های بلندتر را نشان می‌دهند؛ هرچه ارتفاع بیشتر باشد، رنگ به قهوه‌ای تیره‌تر می‌گراید.</div>
+</div>
+</section>
+<section id="mountains">
+<div class="section-head"><div class="num">۴</div><div><h2>کوه‌های جوان و پیر</h2><p>با گذشت زمان، فرسایش شکل کوه‌ها و دره‌هایشان را تغییر می‌دهد.</p></div></div>
+<div class="panel">
+<div class="grid two">
+<div class="formation-card">
+<div class="svg-wrap"><svg viewBox="0 0 420 190" role="img" aria-label="کوه جوان با قله تیز و دره باریک"><rect width="420" height="190" rx="12" fill="#14283b"/><path d="M0 180 L80 110 L130 25 L184 105 L235 48 L310 130 L365 80 L420 135 L420 190 L0 190Z" fill="#718c9d"/><path d="M105 57 L130 25 L153 65 L133 55 L122 66Z" fill="#edf6f8"/><path d="M212 75 L235 48 L260 83 L237 72 L229 82Z" fill="#edf6f8"/><path d="M180 190 L205 128 L225 190" fill="#203b4d"/><path d="M0 180 L80 110 L130 25 L184 105 L235 48 L310 130 L365 80 L420 135" fill="none" stroke="#c3d5de" stroke-width="2"/></svg></div>
+<h3>کوه جوان</h3><p>قله‌ها تیزتر، دامنه‌ها پرشیب‌تر و دره‌ها معمولاً باریک و V شکل‌اند. این شکل‌ها نشان می‌دهند که فرسایش هنوز نتوانسته ناهمواری‌ها را زیاد هموار کند.</p>
+</div>
+<div class="formation-card">
+<div class="svg-wrap"><svg viewBox="0 0 420 190" role="img" aria-label="کوه پیر با قله‌های گرد و دامنه ملایم"><rect width="420" height="190" rx="12" fill="#14283b"/><path d="M0 160 Q35 125 75 122 Q115 115 145 80 Q170 58 195 82 Q225 110 250 95 Q285 66 312 92 Q350 120 380 112 L420 130 L420 190 L0 190Z" fill="#8c9e8a"/><path d="M0 160 Q35 125 75 122 Q115 115 145 80 Q170 58 195 82 Q225 110 250 95 Q285 66 312 92 Q350 120 380 112 L420 130" fill="none" stroke="#c5d6b8" stroke-width="3"/><path d="M190 190 Q205 145 230 135 Q250 145 266 190" fill="#3b5e55"/></svg></div>
+<h3>کوه پیر</h3><p>قله‌ها گردتر، دامنه‌ها ملایم‌تر و دره‌ها معمولاً بازتر و U شکل توصیف می‌شوند. فرسایش در مدت طولانی شکل اولیهٔ کوه را تغییر داده است.</p>
+</div>
+</div>
+<div class="callout">نکتهٔ مهم: سن کوه تنها عامل شکل آن نیست؛ نوع سنگ، آب‌وهوا و شدت فرسایش هم اثر دارند. در این درس، شکل‌های بالا برای مقایسهٔ کلی کوه‌های جوان و پیر آمده‌اند.</div>
+</div>
+</section>
+<section id="plates">
+<div class="section-head"><div class="num">۵</div><div><h2>ورقه‌های زمین چگونه حرکت می‌کنند؟</h2><p>پوسته و بخش بالایی گوشته به ورقه‌های بزرگی تقسیم شده‌اند که بسیار آهسته حرکت می‌کنند.</p></div></div>
+<div class="panel">
+<div class="plate-scene">
+<svg id="plateSvg" viewBox="0 0 720 300" role="img" aria-label="نمای برشی از ورقه‌های زمین">
+<defs><linearGradient id="mantle" x1="0" x2="0" y1="0" y2="1"><stop stop-color="#d47b54"/><stop offset="1" stop-color="#783e48"/></linearGradient></defs>
+<rect width="720" height="300" rx="12" fill="#0d1b2c"/>
+<path d="M0 115 Q120 100 240 115 T480 115 T720 115 L720 300 L0 300Z" fill="url(#mantle)"/>
+<path id="leftPlate" d="M0 82 L325 82 L350 112 L0 112Z" fill="#73a9a0" stroke="#c3e9d9" stroke-width="2"/>
+<path id="rightPlate" d="M395 82 L720 82 L720 112 L370 112Z" fill="#8b9fc2" stroke="#d4e2ff" stroke-width="2"/>
+<path d="M325 82 L350 112 L370 112 L395 82" fill="#e9b77c"/>
+<path d="M350 112 L370 112 L375 160 L345 160Z" fill="#d96e50"/>
+<path d="M360 160 L360 205" stroke="#ffd477" stroke-width="5" stroke-linecap="round"/>
+<path d="M350 195 L360 210 L370 195" fill="none" stroke="#ffd477" stroke-width="5"/>
+<text x="160" y="65" fill="#e7f5f2" font-size="18" text-anchor="middle">ورقهٔ اول</text><text x="555" y="65" fill="#e7edff" font-size="18" text-anchor="middle">ورقهٔ دوم</text>
+<text x="360" y="248" fill="#ffe1c8" font-size="18" text-anchor="middle">گوشتهٔ نرم و خمیری</text>
+<text x="360" y="25" fill="#d6e3f1" font-size="14" text-anchor="middle">نمای ساده‌شده از پوسته و گوشته</text>
+</svg>
+</div>
+<div class="controls"><label for="plateMode">نوع حرکت ورقه‌ها:</label><select id="plateMode"><option value="converge">نزدیک‌شدن و برخورد</option><option value="diverge">دورشدن از هم</option><option value="slide">لغزش در کنار هم</option></select><button class="action" id="showPlate">نمایش حرکت</button></div>
+<p id="plateExplanation">وقتی ورقه‌ها به هم نزدیک می‌شوند، فشرده‌شدن لایه‌ها می‌تواند چین‌خوردگی و رشته‌کوه ایجاد کند. در برخی مرزها فرورانش و فعالیت آتشفشانی هم رخ می‌دهد.</p>
+<div class="process"><div class="step"><b>۱. حرکت آرام</b>ورقه‌ها هر سال فقط چند سانتی‌متر جابه‌جا می‌شوند.</div><div class="step"><b>۲. برخورد یا لغزش</b>ورقه‌ها به هم نزدیک می‌شوند، از هم دور می‌شوند یا کنار هم می‌لغزند.</div><div class="step"><b>۳. تغییر پوسته</b>فشار، شکستگی یا بالا آمدن مواد می‌تواند پوسته را تغییر دهد.</div><div class="step"><b>۴. ناهمواری تازه</b>در گذر میلیون‌ها سال، کوه، گسل و آتشفشان شکل می‌گیرد.</div></div>
+<div class="callout">سرعت حرکت کم است، اما چون فرایند در زمان بسیار طولانی ادامه دارد، نتیجه می‌تواند بسیار بزرگ باشد.</div>
+</div>
+</section>
+<section id="forces">
+<div class="section-head"><div class="num">۶</div><div><h2>چه عواملی ناهمواری‌ها را می‌سازند و تغییر می‌دهند؟</h2><p>دو گروه عامل طبیعی با اثرهای متفاوت.</p></div></div>
+<div class="grid two">
+<div class="panel">
+<h3 style="color:var(--gold);margin-top:0">🔥 عوامل درونی</h3>
+<p>از نیروها و فرایندهای درون زمین سرچشمه می‌گیرند و می‌توانند پوسته را بالا ببرند، خم کنند یا بشکنند.</p>
+<div class="formation-card"><h3>چین‌خوردگی</h3><p>وقتی لایه‌های سنگی تحت فشار قرار می‌گیرند، خم می‌شوند و چین می‌خورند؛ این فرایند می‌تواند رشته‌کوه بسازد.</p><div class="svg-wrap"><svg viewBox="0 0 420 135"><rect width="420" height="135" rx="10" fill="#0d1b2c"/><path d="M0 25 Q55 -5 105 25 T210 25 T315 25 T420 25" fill="none" stroke="#e6bf86" stroke-width="12"/><path d="M0 52 Q55 22 105 52 T210 52 T315 52 T420 52" fill="none" stroke="#91b9a8" stroke-width="12"/><path d="M0 79 Q55 49 105 79 T210 79 T315 79 T420 79" fill="none" stroke="#e6bf86" stroke-width="12"/><path d="M75 116 L125 116 M345 116 L295 116" stroke="#ffcf70" stroke-width="4"/><path d="M118 108 L128 116 L118 124 M302 108 L292 116 L302 124" fill="none" stroke="#ffcf70" stroke-width="4"/></svg></div></div>
+<div class="formation-card" style="margin-top:12px"><h3>گسل</h3><p>شکستگی‌ای در پوسته است که در امتداد آن، قطعات سنگی نسبت به هم جابه‌جا می‌شوند.</p><div class="svg-wrap"><svg viewBox="0 0 420 135"><rect width="420" height="135" rx="10" fill="#0d1b2c"/><path d="M0 25 H185 L240 75 H420 V135 H0Z" fill="#7b9a8a"/><path d="M0 55 H185 L240 105 H420" fill="none" stroke="#d7c18e" stroke-width="10"/><path d="M210 0 L170 135" stroke="#ffb36b" stroke-width="4" stroke-dasharray="7 5"/><path d="M90 15 L145 15 M330 95 L275 95" stroke="#ffcf70" stroke-width="4"/><path d="M137 7 L147 15 L137 23 M283 87 L273 95 L283 103" fill="none" stroke="#ffcf70" stroke-width="4"/></svg></div></div>
+<div class="formation-card" style="margin-top:12px"><h3>آتشفشان</h3><p>مواد مذاب (ماگما) از درون زمین به سمت بالا حرکت می‌کنند و در شرایطی به سطح می‌رسند؛ انباشته‌شدن مواد می‌تواند آتشفشان بسازد.</p></div>
+</div>
+<div class="panel">
+<h3 style="color:var(--blue);margin-top:0">🌧️ عوامل بیرونی</h3>
+<p>در سطح زمین عمل می‌کنند و با خردکردن، فرسودن و جابه‌جاکردن مواد، شکل ناهمواری‌ها را تغییر می‌دهند.</p>
+<div class="formation-card"><h3>هوازدگی</h3><p>خردشدن یا تغییر سنگ‌ها در همان محل بر اثر عواملی مانند تغییر دما و آب.</p></div>
+<div class="formation-card" style="margin-top:12px"><h3>فرسایش آبی و بادی</h3><p>آب جاری و باد ذرات را می‌سایند و جابه‌جا می‌کنند؛ دره‌ها، سطح‌های فرسوده و رسوبات می‌توانند حاصل این فرایندها باشند.</p></div>
+<div class="formation-card" style="margin-top:12px"><h3>فرسایش یخچالی</h3><p>حرکت یخچال‌ها سنگ‌ها را می‌ساید و مواد را جابه‌جا می‌کند و می‌تواند دره‌های پهن U شکل بسازد.</p></div>
+</div>
+</div>
+<div class="panel" style="margin-top:16px">
+<h3>یک فرایند، چند مرحله</h3>
+<div class="process"><div class="step"><b>ساخته‌شدن</b>نیروهای درونی کوه یا شکستگی ایجاد می‌کنند.</div><div class="step"><b>خردشدن</b>هوازدگی سنگ‌ها را ضعیف و خرد می‌کند.</div><div class="step"><b>جابه‌جایی</b>آب، باد و یخ مواد را حمل می‌کنند.</div><div class="step"><b>تغییر چهره</b>قله‌ها فرسوده می‌شوند و رسوب در جاهای دیگر ته‌نشین می‌شود.</div></div>
+</div>
+</section>
+<section id="human">
+<div class="section-head"><div class="num">۷</div><div><h2>انسان هم چهرهٔ زمین را تغییر می‌دهد</h2><p>برای رفع نیازها و استفاده از محیط، انسان در ناهمواری‌ها دست‌کاری می‌کند.</p></div></div>
+<div class="panel">
+<div class="grid">
+<div class="three-card"><div class="icon">🛣️</div><h3>جاده‌سازی</h3><p>بریدن دامنه‌ها، خاک‌برداری و پرکردن فرورفتگی‌ها مسیر عبور را آماده می‌کند.</p><span class="pill">فایده: رفت‌وآمد</span></div>
+<div class="three-card"><div class="icon">🚇</div><h3>تونل‌سازی</h3><p>با حفر تونل، می‌توان از زیر کوه عبور کرد و مسیر را کوتاه‌تر کرد.</p><span class="pill">نیازمند بررسی پایداری سنگ</span></div>
+<div class="three-card"><div class="icon">🏞️</div><h3>سدسازی</h3><p>سدها مسیر جریان آب را تغییر می‌دهند و در پشت سد مخزن ایجاد می‌شود.</p><span class="pill">فایده: ذخیرهٔ آب</span></div>
+<div class="three-card"><div class="icon">🌾</div><h3>کشت پلکانی</h3><p>در دامنه‌ها، زمین را به پله‌هایی تبدیل می‌کنند تا کشت در شیب امکان‌پذیرتر شود و رواناب کاهش یابد.</p><span class="pill">کشاورزی در دامنه</span></div>
+<div class="three-card"><div class="icon">🏠</div><h3>ساخت‌وساز</h3><p>ساخت خانه و روستا ممکن است با تسطیح زمین یا تغییر شیب همراه باشد.</p><span class="pill">نیازمند انتخاب محل مناسب</span></div>
+<div class="three-card"><div class="icon">⛏️</div><h3>معدن‌کاری</h3><p>برداشت مواد معدنی می‌تواند شکل سطح زمین را تغییر دهد و در صورت مدیریت نامناسب به محیط آسیب بزند.</p><span class="pill">اثر محیطی احتمالی</span></div>
+</div>
+<div class="callout">برای هر مداخله باید هم فایده‌ها و هم پیامدها بررسی شوند؛ تغییر شیب زمین می‌تواند خطر فرسایش یا ناپایداری دامنه را افزایش دهد.</div>
+</div>
+</section>
+<section id="review">
+<div class="section-head"><div class="num">۸</div><div><h2>خودت را امتحان کن</h2><p>برای هر پرسش، گزینه‌ای را انتخاب کن؛ بازخورد همان‌جا نمایش داده می‌شود.</p></div></div>
+<div class="panel quiz" id="quiz">
+<div class="quiz-q" data-answer="1"><p>۱) کدام کره بخش جامد و خارجی زمین است؟</p><button data-opt="0">آب‌کره</button><button data-opt="1">سنگ‌کره</button><button data-opt="2">هواکره</button><div class="feedback"></div></div>
+<div class="quiz-q" data-answer="2"><p>۲) کدام گزینه فلات را بهتر توصیف می‌کند؟</p><button data-opt="0">سرزمین پست و هموار</button><button data-opt="1">فرورفتگی عمیق اقیانوس</button><button data-opt="2">سرزمین مرتفع و نسبتاً هموار</button><div class="feedback"></div></div>
+<div class="quiz-q" data-answer="0"><p>۳) کدام‌یک نمونه‌ای از عوامل درونی است؟</p><button data-opt="0">حرکت ورقه‌های زمین</button><button data-opt="1">فرسایش بادی</button><button data-opt="2">هوازدگی</button><div class="feedback"></div></div>
+<div class="quiz-q" data-answer="1"><p>۴) در گسل چه اتفاقی می‌افتد؟</p><button data-opt="0">فقط آب تبخیر می‌شود</button><button data-opt="1">سنگ‌ها می‌شکنند و قطعات جابه‌جا می‌شوند</button><button data-opt="2">سطح زمین کاملاً هموار می‌شود</button><div class="feedback"></div></div>
+<div class="quiz-q" data-answer="2"><p>۵) کدام فعالیت انسانی ناهمواری دامنه را به پله‌های کشت تبدیل می‌کند؟</p><button data-opt="0">تونل‌سازی</button><button data-opt="1">سدسازی</button><button data-opt="2">کشت پلکانی</button><div class="feedback"></div></div>
+<div class="quiz-q" data-answer="0"><p>۶) کدام عامل بیرونی می‌تواند درهٔ U شکل بسازد؟</p><button data-opt="0">فرسایش یخچالی</button><button data-opt="1">چین‌خوردگی</button><button data-opt="2">حرکت ورقه‌ها</button><div class="feedback"></div></div>
+<button class="action" id="resetQuiz" style="justify-self:start">شروع دوبارهٔ مرور</button><div id="score" class="callout" style="display:none"></div>
+</div>
+</section>
+</main>
+<footer class="container">کاوشگر آموزشی درس «چهرهٔ زمین» • برای یادگیری بهتر، هر بخش را با مثال‌های محیط اطراف خود مقایسه کن.</footer>
+<script>
+const sphereData={
+ litho:{title:"🪨 سنگ‌کره (لیتوسفر)",text:"بخش جامد و خارجی زمین است و از سنگ و خاک تشکیل شده است. سطح خشکی‌ها و بستر اقیانوس‌ها در این بخش قرار دارند.",stats:["حالت: جامد","نمونه: سنگ، خاک، پوستهٔ زمین"],relation:"سنگ‌کره بستر خشکی‌ها و کف اقیانوس‌هاست. آب و هوا با آن تماس دارند و در طول زمان شکل سطح آن را تغییر می‌دهند."},
+ hydro:{title:"💧 آب‌کره (هیدروسفر)",text:"همهٔ آب‌های زمین را دربرمی‌گیرد؛ از اقیانوس‌ها، دریاها، دریاچه‌ها و رودها تا یخچال‌ها و آب‌های زیرزمینی.",stats:["حدود ۷۱٪ سطح زمین","آب سطحی و زیرزمینی"],relation:"آب برای زندگی ضروری است و با جریان خود می‌تواند سنگ‌ها را فرسوده کند، مواد را جابه‌جا کند و در شکل‌گیری جلگه‌ها نقش داشته باشد."},
+ atmo:{title:"💨 هواکره یا جو (اتمسفر)",text:"لایه‌ای از گازهاست که زمین را احاطه کرده است. در متن درس، ترکیب اصلی آن حدود ۷۸٪ نیتروژن، ۲۱٪ اکسیژن و ۱٪ گازهای دیگر بیان شده است.",stats:["۷۸٪ نیتروژن","۲۱٪ اکسیژن","۱٪ گازهای دیگر"],relation:"هواکره گازهای لازم برای زندگی را فراهم می‌کند و پدیده‌های جوی مانند بارش، باد و تغییر دما می‌توانند بر سطح زمین اثر بگذارند."},
+ bio:{title:"🌱 زیست‌کره (بیوسفر)",text:"بخش‌هایی از زمین که موجودات زنده در آن زندگی می‌کنند؛ انسان، گیاهان و جانوران همگی به محیط‌های دیگر وابسته‌اند.",stats:["موجودات زنده","وابسته به آب، هوا و سطح زمین"],relation:"زیست‌کره از سنگ‌کره، آب‌کره و هواکره جدا نیست؛ زندگی با ارتباط میان این محیط‌ها امکان‌پذیر می‌شود."}
+};
+document.querySelectorAll("[data-sphere]").forEach(btn=>btn.addEventListener("click",()=>{
+ document.querySelectorAll("[data-sphere]").forEach(b=>b.classList.remove("active"));btn.classList.add("active");
+ const d=sphereData[btn.dataset.sphere];
+ document.getElementById("sphereDetail").innerHTML=`<h3>${d.title}</h3><p>${d.text}</p><div class="statline">${d.stats.map(s=>`<span class="stat">${s}</span>`).join("")}</div>`;
+ document.getElementById("sphereRelation").textContent=d.relation;
+}));
+const plateTexts={
+ converge:"وقتی ورقه‌ها به هم نزدیک می‌شوند، فشار می‌تواند لایه‌ها را چین دهد و رشته‌کوه بسازد. در برخی مرزها، فرورانش و فعالیت آتشفشانی هم رخ می‌دهد.",
+ diverge:"وقتی ورقه‌ها از هم دور می‌شوند، مواد داغ درونی می‌توانند بالا بیایند و پوستهٔ تازه تشکیل شود؛ این فرایند در بعضی نواحی کف اقیانوس دیده می‌شود.",
+ slide:"وقتی ورقه‌ها در کنار هم می‌لغزند، تنش در پوسته جمع می‌شود و شکستگی‌ها و گسل‌ها شکل می‌گیرند؛ حرکت ناگهانی در امتداد گسل می‌تواند زمین‌لرزه ایجاد کند."
+};
+document.getElementById("showPlate").addEventListener("click",()=>{
+ const mode=document.getElementById("plateMode").value;
+ document.getElementById("plateExplanation").textContent=plateTexts[mode];
+ const l=document.getElementById("leftPlate"),r=document.getElementById("rightPlate");
+ if(mode==="converge"){l.setAttribute("d","M0 82 L345 82 L360 112 L0 112Z");r.setAttribute("d","M375 82 L720 82 L720 112 L360 112Z");}
+ if(mode==="diverge"){l.setAttribute("d","M0 82 L300 82 L325 112 L0 112Z");r.setAttribute("d","M420 82 L720 82 L720 112 L395 112Z");}
+ if(mode==="slide"){l.setAttribute("d","M0 75 L325 75 L325 105 L0 105Z");r.setAttribute("d","M395 105 L720 105 L720 135 L395 135Z");}
+});
+let score=0,answered=0;
+document.querySelectorAll(".quiz-q").forEach(q=>q.querySelectorAll("button").forEach(btn=>btn.addEventListener("click",()=>{
+ if(q.dataset.done)return;
+ q.dataset.done="1";answered++;
+ const ok=btn.dataset.opt===q.dataset.answer;
+ if(ok){score++;btn.classList.add("correct");q.querySelector(".feedback").textContent="درست است! آفرین.";}
+ else{btn.classList.add("wrong");const right=q.querySelector(`[data-opt="${q.dataset.answer}"]`);right.classList.add("correct");q.querySelector(".feedback").textContent="این گزینه درست نیست؛ گزینهٔ سبزرنگ پاسخ صحیح است.";}
+ if(answered===6){const box=document.getElementById("score");box.style.display="block";box.textContent=`نتیجه: ${score} از ۶ پاسخ درست.`;}
+})));
+document.getElementById("resetQuiz").addEventListener("click",()=>{
+ score=0;answered=0;
+ document.querySelectorAll(".quiz-q").forEach(q=>{delete q.dataset.done;q.querySelectorAll("button").forEach(b=>b.classList.remove("correct","wrong"));q.querySelector(".feedback").textContent="";});
+ const box=document.getElementById("score");box.style.display="none";box.textContent="";
+});
+</script>
+</body>
+</html>
